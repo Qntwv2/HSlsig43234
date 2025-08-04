@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Manager - Admin</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-br from-purple-900 via-purple-800 to-indigo-900 min-h-screen">
+    <!-- Admin Login Modal -->
+    <div id="adminLoginModal" class="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50">
+        <div class="bg-white/10 backdrop-blur-lg rounded-2xl shadow-2xl p-8 border border-white/20 max-w-md w-full mx-4">
+            <h2 class="text-2xl font-bold text-white text-center mb-6">Admin Access Required</h2>
+            <form id="adminLoginForm" class="space-y-4">
+                <input type="password" id="adminPassword" placeholder="Enter admin password" 
+                       class="w-full px-4 py-3 border border-purple-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent outline-none transition-all duration-200">
+                <button type="submit" 
+                        class="w-full px-6 py-3 bg-purple-600 hover:bg-purple-700 text-white font-semibold rounded-lg transition-all duration-200">
+                    Access Admin Panel
+                </button>
+            </form>
+            <div id="adminErrorMessage" class="hidden mt-4 p-3 bg-red-100 border border-red-400 text-red-700 rounded-lg text-center">
+                Incorrect admin password. Access denied.
+            </div>
+        </div>
+    </div>
+
+    <div id="adminPanel" class="hidden container mx-auto px-4 py-8">
+        <div class="max-w-2xl mx-auto">
+            <div class="bg-white/10 backdrop-blur-lg rounded-2xl shadow-2xl p-8 border border-white/20">
+                <h1 class="text-3xl font-bold text-white text-center mb-8">Password Manager</h1>
+                
+                <!-- Add Password Section -->
+                <div class="mb-8">
+                    <h2 class="text-xl font-semibold text-white mb-4">Add New Password</h2>
+                    <div class="flex gap-3">
+                        <input type="text" id="newPassword" placeholder="Enter new password" 
+                               class="flex-1 px-4 py-3 border border-purple-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent outline-none transition-all duration-200">
+                        <button onclick="addPassword()" 
+                                class="px-6 py-3 bg-purple-600 hover:bg-purple-700 text-white font-semibold rounded-lg transition-all duration-200 transform hover:scale-105">
+                            Add
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Current Passwords Section -->
+                <div>
+                    <h2 class="text-xl font-semibold text-white mb-4">Current Passwords</h2>
+                    <div id="passwordList" class="space-y-3">
+                        <!-- Passwords will be loaded here -->
+                    </div>
+                </div>
+
+                <!-- Back to Login -->
+                <div class="mt-8 text-center">
+                    <a href="index.html" class="inline-block px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-lg transition-all duration-200 transform hover:scale-105">
+                        Back to Login
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let passwords = [];
+        const ADMIN_PASSWORD = 'admin123'; // Admin password to access this panel
+
+        // Admin login functionality
+        document.getElementById('adminLoginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const adminPassword = document.getElementById('adminPassword').value;
+            const errorMessage = document.getElementById('adminErrorMessage');
+            
+            if (adminPassword === ADMIN_PASSWORD) {
+                document.getElementById('adminLoginModal').classList.add('hidden');
+                document.getElementById('adminPanel').classList.remove('hidden');
+                loadPasswords(); // Load passwords after successful login
+            } else {
+                errorMessage.classList.remove('hidden');
+                document.getElementById('adminPassword').value = '';
+                setTimeout(() => {
+                    errorMessage.classList.add('hidden');
+                }, 3000);
+            }
+        });
+
+        // Load passwords from localStorage (simulating file storage)
+        function loadPasswords() {
+            const stored = localStorage.getItem('passwords');
+            if (stored) {
+                passwords = JSON.parse(stored);
+            } else {
+                passwords = ['1234hsl', 'hsl-Jitsu']; // Default passwords
+                savePasswords();
+            }
+            displayPasswords();
+        }
+
+        // Save passwords to localStorage
+        function savePasswords() {
+            localStorage.setItem('passwords', JSON.stringify(passwords));
+        }
+
+        // Display passwords in the list
+        function displayPasswords() {
+            const passwordList = document.getElementById('passwordList');
+            passwordList.innerHTML = '';
+
+            passwords.forEach((password, index) => {
+                const passwordItem = document.createElement('div');
+                passwordItem.className = 'flex items-center justify-between bg-white/10 backdrop-blur-sm rounded-lg p-4 border border-white/20';
+                passwordItem.innerHTML = `
+                    <span class="text-white font-mono text-lg">${password}</span>
+                    <button onclick="deletePassword(${index})" 
+                            class="px-4 py-2 bg-red-600 hover:bg-red-700 text-white font-semibold rounded-lg transition-all duration-200 transform hover:scale-105">
+                        Delete
+                    </button>
+                `;
+                passwordList.appendChild(passwordItem);
+            });
+        }
+
+        // Add new password - make it globally accessible
+        window.addPassword = function() {
+            const newPasswordInput = document.getElementById('newPassword');
+            const newPassword = newPasswordInput.value.trim();
+
+            if (newPassword === '') {
+                alert('Please enter a password');
+                return;
+            }
+
+            if (passwords.includes(newPassword)) {
+                alert('Password already exists');
+                return;
+            }
+
+            passwords.push(newPassword);
+            savePasswords();
+            displayPasswords();
+            newPasswordInput.value = '';
+        }
+
+        // Delete password - make it globally accessible
+        window.deletePassword = function(index) {
+            if (passwords.length === 1) {
+                alert('Cannot delete the last password');
+                return;
+            }
+
+            if (confirm('Are you sure you want to delete this password?')) {
+                passwords.splice(index, 1);
+                savePasswords();
+                displayPasswords();
+            }
+        }
+
+        // Allow Enter key to add password
+        document.getElementById('newPassword').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                addPassword();
+            }
+        });
+
+        // Passwords will be loaded after admin authentication
+    </script>
+</body>
+</html>

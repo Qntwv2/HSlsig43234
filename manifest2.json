@@ -1,0 +1,17 @@
+{
+    "name": "vuohi.org",
+    "short_name": "Vuohi",
+    "theme_color": "#fff",
+    "background_color": "#121212",
+    "display": "standalone",
+    "orientation": "portrait",
+    "scope": "/",
+    "start_url": "/dashboard",
+    "icons": [
+      {
+        "src": "/favicon.ico",
+        "sizes": "64x64 32x32 24x24 16x16",
+        "type": "image/x-icon"
+      }
+    ]
+  }

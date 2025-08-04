@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>    <link href="rappasoft/laravel-livewire-tables/core.min.css" rel="stylesheet" />     <link href="rappasoft/laravel-livewire-tables/thirdparty.css" rel="stylesheet" />
+    <meta charset="utf-8">
+
+    <meta name="viewport"
+        content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no,shrink-to-fit=no">
+    <title>vuohi.org - Ticket</title>
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5Q80BVP2SZ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-5Q80BVP2SZ');
+</script>
+    <link href="css/all.min.css" rel="stylesheet" />
+    <link href="css/fonts.css" rel="stylesheet" />
+    <link rel="manifest" href="manifest.json" />
+    <meta name="mobile-web-app-capable" content="yes">
+    <link rel="preload" as="style" href="build/assets/vue-0e4NEHia.css" /><link rel="preload" as="style" href="build/assets/app-C_ffcLDD.css" /><link rel="modulepreload" href="build/assets/vue-DohHF9Vj.js" /><link rel="modulepreload" href="build/assets/_commonjsHelpers-BosuxZz1.js" /><link rel="stylesheet" href="build/assets/vue-0e4NEHia.css" data-navigate-track="reload" /><link rel="stylesheet" href="build/assets/app-C_ffcLDD.css" data-navigate-track="reload" /><script type="module" src="build/assets/vue-DohHF9Vj.js" data-navigate-track="reload"></script>    <!-- Livewire Styles --><style >[wire\:loading][wire\:loading], [wire\:loading\.delay][wire\:loading\.delay], [wire\:loading\.inline-block][wire\:loading\.inline-block], [wire\:loading\.inline][wire\:loading\.inline], [wire\:loading\.block][wire\:loading\.block], [wire\:loading\.flex][wire\:loading\.flex], [wire\:loading\.table][wire\:loading\.table], [wire\:loading\.grid][wire\:loading\.grid], [wire\:loading\.inline-flex][wire\:loading\.inline-flex] {display: none;}[wire\:loading\.delay\.none][wire\:loading\.delay\.none], [wire\:loading\.delay\.shortest][wire\:loading\.delay\.shortest], [wire\:loading\.delay\.shorter][wire\:loading\.delay\.shorter], [wire\:loading\.delay\.short][wire\:loading\.delay\.short], [wire\:loading\.delay\.default][wire\:loading\.delay\.default], [wire\:loading\.delay\.long][wire\:loading\.delay\.long], [wire\:loading\.delay\.longer][wire\:loading\.delay\.longer], [wire\:loading\.delay\.longest][wire\:loading\.delay\.longest] {display: none;}[wire\:offline][wire\:offline] {display: none;}[wire\:dirty]:not(textarea):not(input):not(select) {display: none;}:root {--livewire-progress-bar-color: #2299dd;}[x-cloak] {display: none !important;}</style>
+<script src="rappasoft/laravel-livewire-tables/core.min.js"  ></script> <script src="rappasoft/laravel-livewire-tables/thirdparty.min.js"  ></script></head>
+
+<body ontouchstart="" class="gotham_book">
+
+    <div>
+        <main id="main" class="p-0 m-0 bg-[#f4f4f5] overflow-hidden">
+            <div id="vue-app"></div>
+
+        </main>
+
+        <div wire:snapshot="{&quot;data&quot;:{&quot;show_notice&quot;:false},&quot;memo&quot;:{&quot;id&quot;:&quot;WLvxSBykdiRL9VcadYcI&quot;,&quot;name&quot;:&quot;ticket.notice&quot;,&quot;path&quot;:&quot;ticket&quot;,&quot;method&quot;:&quot;GET&quot;,&quot;children&quot;:[],&quot;scripts&quot;:[&quot;3769652359-0&quot;],&quot;assets&quot;:[],&quot;errors&quot;:[],&quot;locale&quot;:&quot;en&quot;},&quot;checksum&quot;:&quot;890ea2d7844ce1c5b812d7af564e9ed99a3a33b6aeb8939b9a507a8d093cf8fb&quot;}" wire:effects="{&quot;scripts&quot;:{&quot;3769652359-0&quot;:&quot;    &lt;script&gt;\n        const hidden = localStorage.getItem(&#039;notice_hide&#039;) || false;\n        \n        if(!hidden){\n            Livewire.dispatch(&#039;enable_notice&#039;, {});\n        }\n\n\n    &lt;\/script&gt;\n        &quot;},&quot;listeners&quot;:[&quot;enable_notice&quot;,&quot;close_notice&quot;]}" wire:id="WLvxSBykdiRL9VcadYcI">
+    <!--[if BLOCK]><![endif]--><!--[if ENDBLOCK]><![endif]-->
+        </div>        
+        <div wire:snapshot="{&quot;data&quot;:{&quot;message&quot;:&quot;&quot;,&quot;open&quot;:false},&quot;memo&quot;:{&quot;id&quot;:&quot;SLU4PVNkIPQbDhP0ZQXP&quot;,&quot;name&quot;:&quot;ticket.notification&quot;,&quot;path&quot;:&quot;ticket&quot;,&quot;method&quot;:&quot;GET&quot;,&quot;children&quot;:[],&quot;scripts&quot;:[&quot;1037766955-0&quot;],&quot;assets&quot;:[],&quot;errors&quot;:[],&quot;locale&quot;:&quot;en&quot;},&quot;checksum&quot;:&quot;f78320ce1ec824f0851d6f857c1b4b3edcc15f68a4452f9c8fb172a7e74e689f&quot;}" wire:effects="{&quot;scripts&quot;:{&quot;1037766955-0&quot;:&quot;&lt;script&gt;\n\nconst welcome_read = localStorage.getItem(&#039;welcome_read&#039;) || false;\n\n\nif(!welcome_read){\n    $wire.dispatch(\&quot;show_notif\&quot;, {message: \&quot;Hi! welcome to the new vuohi.org application, hope you enjoy. If you have any issues contact support!\&quot;});\n    localStorage.setItem(&#039;welcome_read&#039;, true);\n}\n   \n&lt;\/script&gt;\n    &quot;},&quot;listeners&quot;:[&quot;show_notif&quot;,&quot;close_ticket_notif&quot;]}" wire:id="SLU4PVNkIPQbDhP0ZQXP" wire:ignore.self>
+ 
+    <div x-data="{ open: window.Livewire.find('SLU4PVNkIPQbDhP0ZQXP').entangle('open') }" x-transition x-show="open" class="fixed bottom-24 z-[9999] h-fit w-full">
+        <div class="w-full flex justify-center items-center h-fit">
+            <div class="w-[90%] p-3 bg-[#333] border border-neutral-800 drop-shadow-md h-fit rounded-xl flex flex-col">
+        
+                <div class="flex flex-row justify-between">
+                    <label class="text-white text-sm gotham_book whitespace-normal break-words w-[90%]">
+                        
+                    </label>
+                    <i wire:click="close_ticket_notif" class="fa-regular fa-xmark text-white"></i>
+        
+                </div>
+            
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+    </div>
+
+    <script src="js/pro.js"></script>
+
+
+
+    <script >
+    console.warn('Livewire: The published Livewire assets are out of date\n See: https://livewire.laravel.com/docs/installation#publishing-livewires-frontend-assets')
+</script>
+<script src="vendor/livewire/livewire.min.js%3Fid=cc800bf4"   data-csrf="OLQAKxfzvN9FeqYtESY8kvsN94gp5DGxkvcm7DBl" data-update-uri="/livewire/update" data-navigate-once="true"></script>
+ 
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'8f8c5b9f9a594d31',t:'MTczNTMzNDQ2MS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+
+</html>

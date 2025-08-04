@@ -1,0 +1,18 @@
+# Netlify redirects file
+# Handle client-side routing
+/*    /index.html   200
+
+# Specific redirects for HTML files
+/admin    /admin.html    200
+/dashboard    /dashboard.html    200
+/settings    /settings.html    200
+/chat    /chat.html    200
+/ticket    /ticket.html    200
+/faq    /faq.html    200
+/login    /login.html    200
+/register    /register.html    200
+/news    /news.html    200
+/premium    /premium.html    200
+/privacy-policy    /privacy-policy.html    200
+/tos    /tos.html    200
+/fine-funding    /fine-funding.html    200
