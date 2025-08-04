@@ -26,9 +26,92 @@
 <body ontouchstart="" class="gotham_book">
 
     <div>
-        <main id="main" class="p-0 m-0 bg-[#f4f4f5] overflow-hidden">
-            <div id="vue-app"></div>
+        <main id="main" class="p-0 m-0 bg-[#f4f4f5] min-h-screen">
+            <div class="flex flex-col items-center justify-center min-h-screen p-4">
+                <!-- Header -->
+                <div class="w-full max-w-md mb-6">
+                    <div class="flex items-center justify-between mb-4">
+                        <a href="index.html" class="text-white font-bold text-lg flex flex-row gap-0.5">vuohi<label class="bg-primary-500 py-0 px-1 text-lg">.org</label></a>
+                        <button onclick="window.location.href='index.html'" class="text-white hover:text-gray-300">
+                            <i class="fas fa-times text-xl"></i>
+                        </button>
+                    </div>
+                </div>
 
+                <!-- Ticket Simulator -->
+                <div class="w-full max-w-md bg-white rounded-2xl shadow-2xl overflow-hidden">
+                    <!-- Ticket Header -->
+                    <div class="bg-gradient-to-r from-blue-600 to-blue-800 p-6 text-white">
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="flex items-center space-x-2">
+                                <div class="w-8 h-8 bg-white rounded-full flex items-center justify-center">
+                                    <span class="text-blue-600 font-bold text-sm">HSL</span>
+                                </div>
+                                <span class="font-semibold">Helsinki Region Transport</span>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-xs opacity-75">Valid until</div>
+                                <div class="font-bold" id="ticket-expiry">23:59</div>
+                            </div>
+                        </div>
+                        
+                        <div class="text-center">
+                            <div class="text-2xl font-bold mb-1">SINGLE TICKET</div>
+                            <div class="text-sm opacity-75">Adult • Zones AB</div>
+                        </div>
+                    </div>
+
+                    <!-- Ticket Body -->
+                    <div class="p-6 bg-gray-50">
+                        <!-- QR Code Area -->
+                        <div class="bg-white p-4 rounded-lg mb-4 text-center">
+                            <div class="w-32 h-32 mx-auto bg-black mb-2 flex items-center justify-center" style="background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTI4IiBoZWlnaHQ9IjEyOCIgdmlld0JveD0iMCAwIDEyOCAxMjgiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxMjgiIGhlaWdodD0iMTI4IiBmaWxsPSJ3aGl0ZSIvPgo8cmVjdCB4PSI4IiB5PSI4IiB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIGZpbGw9ImJsYWNrIi8+CjxyZWN0IHg9IjI0IiB5PSI4IiB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIGZpbGw9ImJsYWNrIi8+CjxyZWN0IHg9IjU2IiB5PSI4IiB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIGZpbGw9ImJsYWNrIi8+CjxyZWN0IHg9Ijg4IiB5PSI4IiB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIGZpbGw9ImJsYWNrIi8+CjxyZWN0IHg9IjEwNCIgeT0iOCIgd2lkdGg9IjE2IiBoZWlnaHQ9IjE2IiBmaWxsPSJibGFjayIvPgo8L3N2Zz4K'); background-size: cover;">
+                            </div>
+                            <div class="text-xs text-gray-500">Scan to validate</div>
+                        </div>
+
+                        <!-- Ticket Details -->
+                        <div class="space-y-3">
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">Ticket ID:</span>
+                                <span class="font-mono text-sm" id="ticket-id">HSL-2024-001234</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">Purchase time:</span>
+                                <span class="text-sm" id="purchase-time">12:34</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">Price:</span>
+                                <span class="font-semibold">€2.80</span>
+                            </div>
+                        </div>
+
+                        <!-- Status Indicator -->
+                        <div class="mt-6 p-3 bg-green-100 rounded-lg flex items-center justify-center">
+                            <div class="flex items-center space-x-2">
+                                <div class="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
+                                <span class="text-green-700 font-semibold">VALID TICKET</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Ticket Footer -->
+                    <div class="bg-gray-100 p-4 text-center">
+                        <div class="text-xs text-gray-500 mb-2">Keep this ticket visible during your journey</div>
+                        <div class="text-xs text-gray-400">For support: +358 9 4766 4000</div>
+                    </div>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="w-full max-w-md mt-6 space-y-3">
+                    <button onclick="refreshTicket()" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors">
+                        <i class="fas fa-refresh mr-2"></i>Refresh Ticket
+                    </button>
+                    <button onclick="window.location.href='index.html'" class="w-full bg-gray-600 hover:bg-gray-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors">
+                        <i class="fas fa-home mr-2"></i>Back to Home
+                    </button>
+                </div>
+            </div>
         </main>
 
         <div wire:snapshot="{&quot;data&quot;:{&quot;show_notice&quot;:false},&quot;memo&quot;:{&quot;id&quot;:&quot;WLvxSBykdiRL9VcadYcI&quot;,&quot;name&quot;:&quot;ticket.notice&quot;,&quot;path&quot;:&quot;ticket&quot;,&quot;method&quot;:&quot;GET&quot;,&quot;children&quot;:[],&quot;scripts&quot;:[&quot;3769652359-0&quot;],&quot;assets&quot;:[],&quot;errors&quot;:[],&quot;locale&quot;:&quot;en&quot;},&quot;checksum&quot;:&quot;890ea2d7844ce1c5b812d7af564e9ed99a3a33b6aeb8939b9a507a8d093cf8fb&quot;}" wire:effects="{&quot;scripts&quot;:{&quot;3769652359-0&quot;:&quot;    &lt;script&gt;\n        const hidden = localStorage.getItem(&#039;notice_hide&#039;) || false;\n        \n        if(!hidden){\n            Livewire.dispatch(&#039;enable_notice&#039;, {});\n        }\n\n\n    &lt;\/script&gt;\n        &quot;},&quot;listeners&quot;:[&quot;enable_notice&quot;,&quot;close_notice&quot;]}" wire:id="WLvxSBykdiRL9VcadYcI">
@@ -57,6 +140,55 @@
     </div>
 
     <script src="js/pro.js"></script>
+
+    <script>
+        // Ticket functionality
+        function updateTicketTimes() {
+            const now = new Date();
+            const currentTime = now.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' });
+            const expiryTime = new Date(now.getTime() + 90 * 60000); // 90 minutes from now
+            const expiry = expiryTime.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' });
+            
+            document.getElementById('purchase-time').textContent = currentTime;
+            document.getElementById('ticket-expiry').textContent = expiry;
+        }
+
+        function generateTicketId() {
+            const randomNum = Math.floor(Math.random() * 999999).toString().padStart(6, '0');
+            document.getElementById('ticket-id').textContent = `HSL-2024-${randomNum}`;
+        }
+
+        function refreshTicket() {
+            // Add loading effect
+            const refreshBtn = event.target;
+            const originalText = refreshBtn.innerHTML;
+            refreshBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Refreshing...';
+            refreshBtn.disabled = true;
+            
+            setTimeout(() => {
+                updateTicketTimes();
+                generateTicketId();
+                refreshBtn.innerHTML = originalText;
+                refreshBtn.disabled = false;
+                
+                // Show success feedback
+                const statusDiv = document.querySelector('.bg-green-100');
+                statusDiv.classList.add('animate-pulse');
+                setTimeout(() => {
+                    statusDiv.classList.remove('animate-pulse');
+                }, 1000);
+            }, 1500);
+        }
+
+        // Initialize ticket when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            updateTicketTimes();
+            generateTicketId();
+            
+            // Update time every minute
+            setInterval(updateTicketTimes, 60000);
+        });
+    </script>
 
 
 
