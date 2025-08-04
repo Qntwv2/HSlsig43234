@@ -1,0 +1,11 @@
+{
+    "name": "vuohi/clone",
+    "description": "Vuohi.org clone application",
+    "type": "project",
+    "require": {
+        "php": "^7.4|^8.0"
+    },
+    "scripts": {
+        "start": "php -S 0.0.0.0:$PORT"
+    }
+}
